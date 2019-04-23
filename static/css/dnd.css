@@ -1,0 +1,19 @@
+.dndRulesHolder{
+  width: 40%;
+  min-height: calc(100vh - 20px);
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  border: 1px solid black;
+  padding: 5px;
+}
+.dndRulesHolder h2{
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid;
+  padding:0 0  5px 0;
+}
+.dndRules{
+  width: 100%;
+  margin: 5px;
+}

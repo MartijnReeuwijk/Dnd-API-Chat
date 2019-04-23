@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dnd</title>
+  <link rel="stylesheet" type="text/css" href="/css/master.css">
+  <link rel="stylesheet" type="text/css" href="/css/dnd.css">
+
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favi/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favi/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favi/favicon-16x16.png">
+  <link rel="manifest" href="/img/favi/site.webmanifest">
+  <link rel="mask-icon" href="/img/favi/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#fffffffa">
+</head>
+
+<body>
+
+<section class="dndRulesHolder">
+  <h2>Dnd rules</h2>
+  <div class="rules">
+
+  </div>
+
+</section>
+
+  <section class=" transition chat_holder">
+    <ul id="messages" class="borderRadius"></ul>
+    <form id="form" class="borderRadius" action="">
+      <input class="borderRadius" id="m" autocomplete="off" /><button class="borderRadius" id="button">Send</button>
+    </form>
+
+  </section>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="/js/socketScript.js"></script>
+</body>
+
+</html>
