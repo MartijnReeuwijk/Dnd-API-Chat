@@ -1,0 +1,14 @@
+<%- include('../partials/head'); -%>
+
+<section class="signup login">
+  <form class="" action="signup" method="post">
+    <input type="text" name="name" value="" placeholder="Name">
+    <input type="email" name="email" value="" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    <input type="password" min="5" name="password" value="" placeholder="Password">
+    <input type="text" name="charactername" value="" placeholder="Character name">
+    <input type="submit" name="" value="Submit">
+  </form>
+  <a href="/">login</a>
+
+</section>
+<%- include('../partials/footer'); -%>
