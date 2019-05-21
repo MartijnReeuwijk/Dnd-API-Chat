@@ -1,19 +1,24 @@
 <%- include('./partials/head'); -%>
 
 <section class="dndRulesHolder">
-  <h2>Dnd rules</h2>
+  <!-- <h2>Dnd rules</h2> -->
+  <div class="DndLogo">
+
+  </div>
+  <div class="help">
+    <li>You can use these commands</li>
+    <li>- Rules (!Rules)[falldamage]</li>
+    <li>- I cast [spell] (message contains "cast")</li>
+    <li>- roll [Number]D[Number] for the type and amound</li>
+  </div>
   <div class="rules">
+  </div>
+  <div class="dice">
 
   </div>
 </section>
 
-<section class=" transition chat_holder">
-  <ul id="messages" class="borderRadius"></ul>
-  <form id="form" class="borderRadius" action="">
-    <input class="borderRadius" id="m" autocomplete="off" />
-    <button class="borderRadius" id="button">Send</button>
-  </form>
-</section>
+
 
 <section class="spelllistHolder">
   <h2>Spell list</h2>
@@ -21,12 +26,39 @@
   <datalist id="spellsList">
     <!-- removes the value for now -->
     <% for(var i = 0;  i < spells.length; i++) { %>
-      <option><%= spells[i]["name"]%></option>
-      <% } %>
+    <option>
+      <%= spells[i]["name"]%>
+    </option>
+    <% } %>
   </datalist>
 </section>
 
+
+<section class="datavisual outOfview transition">
+  <h2>Live dice data</h2>
+  <div class="showdatavisual transition">
+  </div>
+
+</section>
+
+<section class=" transition chat_holder">
+  <ul id="messages" class="borderRadius"></ul>
+  <form id="form" class="borderRadius" action="">
+    <button type="button" name="button" class="rollButton" value="!help" title="Assistance ">!help</button>
+    <input class="borderRadius" id="m" autocomplete="off" />
+    <button class="borderRadius" id="button">Send</button>
+    <button type="button" name="button" class="rollButton" value="roll 1D2" title="roll a D2">D2</button>
+    <button type="button" name="button" class="rollButton" value="roll 1D4" title="roll a D4">D4</button>
+    <button type="button" name="button" class="rollButton" value="roll 1D6" title="roll a D6">D6</button>
+    <button type="button" name="button" class="rollButton" value="roll 1D8" title="roll a D8">D8</button>
+    <button type="button" name="button" class="rollButton" value="roll 1D10" title="roll a D10">D10</button>
+    <button type="button" name="button" class="rollButton" value="roll 1D12" title="roll a D12">D12</button>
+    <button type="button" name="button" class="rollButton" value="roll 1D20" title="roll a D20">D20</button>
+    <button type="button" name="button" class="rollButton" value="roll 1D100" title="roll a D100">D100</button>
+  </form>
+</section>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script src="/js/socketScript.js"></script>
+<script src="/js/datavisual.js"></script>
 <%- include('./partials/footer'); -%>

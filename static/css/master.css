@@ -5,84 +5,176 @@
 }
 
 body {
-  font: 13px Helvetica, Arial;
   display: flex;
+  background-color: #e7e7db;
+  font: 13px Helvetica, Arial;
+}
+
+.datavisual {
+  text-align: center;
+  position: absolute;
+  z-index: 20;
+  top: 10px;
+  right: 15px;
+  width: 350px;
+  height: 350px;
+  border: 1px solid black;
+  background-color: white;
+  background-image: url("https://cdn.discordapp.com/emojis/531878659213099018.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.datavisual h2{
+  position: absolute;
+      margin: 0 auto;
+      right: 0;
+      left: 0;
+}
+
+.showdatavisual {
+  position: absolute;
+  bottom: 0;
+  left: -60px;
+  width: 50px;
+  height: 50px;
+  background-image: url("../img/pie-chart.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  
+}
+.showdatavisual:hover{
+  transform: scale(1.2);
 }
 
 .spelllistHolder h2 {
   padding: 0px 5px 5px;
 }
+
 input[list] {
   width: calc(300px - 20px);
-height: 35px;
-padding: 10px;
-border: 2px solid #63d8fc;
-background-color: white;
+  height: 35px;
+  padding: 10px;
+  border: 2px solid #9d0a0e;
+  background-color: white;
 }
-.chat_holder{
+
+.chat_holder {
+  position: relative;
+  z-index: 10;
+  overflow: scroll;
   width: 90%;
   max-width: 1200px;
-  min-height: calc(100vh - 20px);
+  height: calc(100vh - 120px);
   margin: 5px;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  position: relative;
-  border: 1px solid black;
   padding: 5px;
-
+  border: 1px solid black;
+  border-radius: 0px;
+  background-color: #f9f9f9;
 }
-.spelllistHolder{
+
+.spelllistHolder {
   position: fixed;
+  z-index: 20;
   top: 10px;
   right: 10px;
-  background-color: white;
-  opacity: .25;
   padding: 10px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  opacity: .25;
+  border-radius: 0px;
+  background-color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  border-radius: 5px;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.spelllistHolder:hover{
+
+.spelllistHolder:hover {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   opacity: 1;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-
 }
 
-.ffanders{
-  top:  100px;
+.ffanders {
+  top: 100px;
 }
-.rules{
+
+.rules {
   padding: 5px;
-
 }
+
+.dice li {
+  margin: 0;
+  padding: 2px 0 2px 15px;
+  list-style: none;
+  background-image: url("https://static.thenounproject.com/png/763027-200.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 10px;
+}
+
+.dice li:last-of-type {}
+
+.dice {}
 
 #form {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  max-width: 700px;
-  padding: 5px;
-  background-color: #ededed;
-
+  position: fixed;
   right: 0;
+  bottom: 10px;
   left: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  /* make main axis horizontal (default setting) */
+  flex-wrap: wrap;
+  justify-content: center;
+  /* center items horizontally, in this case */
+  width: calc(100% - 10px);
+  max-width: 700px;
   margin-right: auto;
   margin-left: auto;
+  padding: 5px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid black;
+  background-color: #ededed;
+}
+
+#form:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 #form input {
-  width: calc(100% - 100px);
-  margin-right: .5%;
+  width: calc(100% - 165px);
+  height: 35px;
   padding: 10px;
-  border: 2px solid #63d8fc;
+  border: 2px solid #9d0a0e;
   background-color: white;
 }
-#form button {
+
+#form button:first-of-type, #form button:nth-of-type(2) {
   width: calc(100px - 20px);
+  height: 35px;
   margin: 5px 0;
   padding: 10px;
+  color: white;
   border: none;
-  background-color: #b96afa;
+  background-color: #9d0a0e;
+}
+
+#form button {
+  width: calc(12.5% - 10px);
+  height: 35px;
+  margin: 5px 5px;
+  padding: 10px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  color: #333333;
+  /* color: white; */
+  border: none;
+  background-color: white;
+}
+
+#form button:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 #messages {
@@ -92,79 +184,87 @@ background-color: white;
 }
 
 #messages li {
+  margin: 5px;
   /* min-width: 200px; */
   padding: 5px 10px;
-  margin: 5px;
-  border-radius: 5px;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 0px;
 }
-#messages li:hover{
-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+#messages li:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 #messages li:nth-child(even) {
   background: #f9f9f9;
 }
+
 #messages li:nth-child(odd) {
   background: #eee;
 }
-#messages li:last-of-type{
-  border-radius: 5px 5px 0 0;
-  border-bottom: 1px solid black;
 
+#messages li:last-of-type {
+  border-bottom: 1px solid black;
+  border-radius: 5px 5px 0 0;
 }
 
-.loginHolder{
+.loginHolder {
   position: absolute;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.8);
-  display: flex;
-  align-items: center;
-flex-wrap: wrap;
-justify-content: center;
 }
 
-.login{
+.login {
   width: 500px;
   /* height: 100px; */
-text-align: center;
-/* display: inline-flex; */
+  text-align: center;
+  /* display: inline-flex; */
 }
-.login input{
+
+.login input {
+  position: relative;
   width: calc(80% - 10px);
   height: 30px;
   line-height: 30px;
-  position: relative;
 }
-.loginForm label{
+
+.loginForm label {
   position: absolute;
   top: 10px;
 }
-.loginForm button{
-width: calc(20% - 20px);
-height: 30px;
-line-height: 30px;
-margin: 5px;
+
+.loginForm button {
+  width: calc(20% - 20px);
+  height: 30px;
+  margin: 5px;
+  line-height: 30px;
 }
-.colorOption{
+
+.colorOption {
+  display: inline-flex;
   width: 45px;
   height: 45px;
-  border-radius: 50%;
-  display: inline-flex;
   margin: 5px;
-
+  border-radius: 50%;
 }
 
-.borderRadius{
-  border-radius: 5px;
+.borderRadius {
+  border-radius: 0px;
 }
+
 .shadows {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
+
 .hoverShadow:hover {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
+
 .transition {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }

@@ -1,7 +1,6 @@
 console.log("iets");
 (function() {
-
-let keywords = ["cast", "!rules"]
+  let keywords = ["cast", "!rules"];
 
   let socket = io();
   document.querySelector("form").addEventListener("submit", function(e) {
@@ -14,30 +13,56 @@ let keywords = ["cast", "!rules"]
 
   socket.on("chat message", function(msg) {
     let newLi = document.createElement("li");
-    let keyWordCheck = (keywords.indexOf(msg) > -1);
+    let keyWordCheck = keywords.indexOf(msg) > -1;
     newLi.textContent = msg;
     document.querySelector("#messages").append(newLi);
   });
 
   socket.on("botMessage", function(msg) {
+    // can make this like one function i guess
     let newLi = document.createElement("li");
     newLi.textContent = msg;
-    document.querySelector(".rules").append(newLi);
+    document.querySelector(".help").append(newLi);
   });
 
+  // Add dice type on the roll
   socket.on("roll", function(msg) {
+    let dice = new Audio("sounds/dice.mp3");
+    let epic = new Audio("sounds/epic.mp3");
+    let fail = new Audio("sounds/dice.mp3");
     let newLi = document.createElement("li");
+    dice.pause();
+    dice.currentTime = 0;
     newLi.textContent = msg;
-    document.querySelector(".rules").append(newLi);
+    dice.play();
+    if (msg === 1) {
+      newLi.classList.add("natOne");
+      fail.play();
+    }
+    if (msg === 20) {
+      newLi.classList.add("nat20");
+      epic.play();
+    }
+    document.querySelector(".dice").append(newLi);
   });
 
   socket.on("gameRules", function(msg) {
     let newRules = document.createElement("div");
-    newRules.className = "rules"
+    newRules.className = "rules";
     let newLi = document.createElement("li");
     newLi.textContent = msg;
     document.querySelector(".rules").append(newLi);
   });
+
+
+  socket.on("visual", function(rollCount) {
+    datavisual(rollCount)
+  });
+
+
+
+
+
 
 })();
 
@@ -47,4 +72,20 @@ function split(text) {
   return spiltString;
 }
 
-// document.getElementById('button').addEventListener("click", checkFrom);
+function rollAssist() {
+  let rollbuttons = document.getElementsByClassName("rollButton");
+  let rollbuttonsArray = Array.from(rollbuttons);
+  rollbuttonsArray.forEach(diceButtons => {
+    diceButtons.addEventListener("click", function() {
+      document.querySelector("#m").value = this.value;
+    });
+  });
+}
+
+function showdatavisual(){
+document.getElementsByClassName('datavisual')[0].classList.toggle("outOfview")
+}
+
+
+document.getElementsByClassName('showdatavisual')[0].addEventListener("click", showdatavisual);
+rollAssist();

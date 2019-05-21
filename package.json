@@ -25,6 +25,7 @@
     "express-cache-controller": "^1.1.0",
     "express-minify-html": "^0.12.0",
     "express-session": "^1.16.1",
+    "fs": "0.0.1-security",
     "html-minifier": "^3.5.21",
     "http": "0.0.0",
     "install": "^0.12.2",

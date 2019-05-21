@@ -1,19 +1,54 @@
-.dndRulesHolder{
+.dndRulesHolder {
   width: 40%;
-  min-height: calc(100vh - 20px);
+  height: calc(100vh - 120px);
   margin: 5px;
-  border-radius: 5px;
   background-color: #f9f9f9;
   border: 1px solid black;
   padding: 5px;
+  overflow: scroll;
 }
-.dndRulesHolder h2{
+
+.dndRulesHolder h2 {
   text-align: center;
   width: 100%;
   border-bottom: 1px solid;
-  padding:0 0  5px 0;
+  padding: 0 0 5px 0;
 }
-.dndRules{
+
+.dndRules {
   width: 100%;
   margin: 5px;
 }
+.help{
+  padding: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #9d0a0e;
+}
+.DndLogo {
+  width: 100%;
+  height: 50px;
+  margin: 5px 0;
+  border-bottom: 1px solid black;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Dungeons_%26_Dragons_5th_Edition_logo.svg/1200px-Dungeons_%26_Dragons_5th_Edition_logo.svg.png");
+}
+.outOfview{
+  position: absolute;
+  top: 10px;
+  right: -355px;
+}
+.inView{
+  right: 10px;
+
+}
+.natOne {
+  color: red;
+}
+
+.nat20 {
+  color: blue;
+}
+
+/*  */
