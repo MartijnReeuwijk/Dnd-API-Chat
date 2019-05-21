@@ -8,6 +8,7 @@ const express = require("express"),
   io = require("socket.io")(http),
   port = process.env.PORT || 5000,
   fs = require('fs'),
+  rp = require('request-promise');
   Rooms = require("./models/rooms");
 // Data = require("./models/fetchData");
 // SplitAfterCast = require("./models/splitAfterKey");
@@ -26,7 +27,7 @@ app
 const rollCount = {}
 
 
-
+// rebuild to more global for the spells/ can be monsters insteast with a name
 function spells() {
   return new Promise((resolve, reject) => {
     request("http://dnd5eapi.co/api/spells/?", function(error, response, body) {
@@ -60,8 +61,8 @@ io.on("connection", function(socket) {
     }
     if (msg.includes("roll")) {
       let requestOn = splitAfterRoll(msg);
-      // rollDice(requestOn)
-      io.emit("roll", rollDice(requestOn));
+      let dice = rollDice(requestOn)
+      io.emit("roll", dice );
     }
 
     if (msg.includes("cast")) {
@@ -116,6 +117,7 @@ function splitAfterKey(msg) {
   let cast = "cast";
   let text = msg;
   let words = text.split(" ");
+  console.log(words);
   let castIndex = words.findIndex(word => word == cast);
   let nextWord = words[castIndex + 1];
   return capitalizeFirstLetter(nextWord);
@@ -136,17 +138,25 @@ function apiRequest(endpoint) {
   return new Promise((resolve, reject) => {
     request(apiUrl, function(error, response, body) {
       let apiData = JSON.parse(body);
-      let responseUrl = apiData["results"][0]["url"];
-      console.log("error:", error); // Print the error if one occurred
-      console.log("statusCode:", response && response.statusCode); // Print the response status code if a response was received
-      // return responseUrl;
-      // Dit werkt wel maar wil het niet zo
-      return urlRequest(responseUrl);
-      //  dit wil je eigelijk returnen zod at het los is maar misschien kan ik het van uit het diepen omhoog gooien
+      if (apiData["results"][0] === undefined) {
+          reject(this.statusText);
+      }
+      else {
+        let responseUrl = apiData["results"][0]["url"];
+        console.log("error:", error); // Print the error if one occurred
+        console.log("statusCode:", response && response.statusCode); // Print the response status code if a response was received
+        // return responseUrl;
+        // Dit werkt wel maar wil het niet zo
+        return urlRequest(responseUrl);
+        //  dit wil je eigelijk returnen zod at het los is maar misschien kan ik het van uit het diepen omhoog gooien
+      }
     });
-  });
+  })
 }
-
+//
+// .catch(function(e) {
+//   console.log(e); // 'worky!'
+// });
 function urlRequest(url) {
   //  maar hier een new generiek object
   return new Promise((resolve, reject) => {

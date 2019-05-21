@@ -5,9 +5,14 @@
 }
 
 body {
-  display: flex;
   background-color: #e7e7db;
   font: 13px Helvetica, Arial;
+}
+main{
+  width: 100vw;
+  display: flex;
+
+  overflow: hidden;
 }
 
 .datavisual {
@@ -45,7 +50,7 @@ body {
   background-color: white;
   border-radius: 50%;
   cursor: pointer;
-  
+
 }
 .showdatavisual:hover{
   transform: scale(1.2);
@@ -252,7 +257,9 @@ input[list] {
   margin: 5px;
   border-radius: 50%;
 }
-
+.error{
+  color: red;
+}
 .borderRadius {
   border-radius: 0px;
 }

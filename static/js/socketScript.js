@@ -18,6 +18,12 @@ console.log("iets");
     document.querySelector("#messages").append(newLi);
   });
 
+  socket.on("errors", function(error) {
+    let newp = document.createElement("p");
+    newp.textContent = error;
+    document.querySelector(".error").append(newp);
+  });
+
   socket.on("botMessage", function(msg) {
     // can make this like one function i guess
     let newLi = document.createElement("li");
