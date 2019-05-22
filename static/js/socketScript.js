@@ -52,12 +52,23 @@ console.log("iets");
     document.querySelector(".dice").append(newLi);
   });
 
-  socket.on("gameRules", function(msg) {
+  socket.on("gameRules", function(results) {
+    let holder = document.querySelector(".dndRulesHolder")
     let newRules = document.createElement("div");
+
     newRules.className = "rules";
-    let newLi = document.createElement("li");
-    newLi.textContent = msg;
-    document.querySelector(".rules").append(newLi);
+
+    holder.appendChild(newRules)
+
+    Object.keys(results).forEach(function(item) {
+      let newLi = document.createElement("li");
+        // document.querySelector(".rules").append(newLi);
+        newRules.appendChild(newLi);
+      newLi.textContent = item + ":" + results[item];
+
+      // console.log(item, results[item]);
+      // io.emit("gameRules", results[item]);
+    });
   });
 
 
