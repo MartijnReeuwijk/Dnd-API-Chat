@@ -1,4 +1,4 @@
-![Demo pic](https://github.com/MartijnReeuwijk/web-design-1819/blob/master/readmeassets/newHero.png)
+![Demo pic](https://github.com/MartijnReeuwijk/websockets/blob/master/readmeassets/hero.png)
 
 # Real time web
 
@@ -69,11 +69,14 @@ dit doe ik door het gebruiken van een DND API waar de data van de regels uit het
 
 ## API calls / endpoint
 For now the app works with the `http://www.dnd5eapi.co` api and its endpoints.
-`http://dnd5eapi.co/api/classes/
-http://dnd5eapi.co/api/features/
-http://dnd5eapi.co/api/monsters/1/
-http://dnd5eapi.co/api/spells/?name=`
-For now i only use the spells with a `?name=` search on the api after that call you will get a result that looks like:
+- `http://dnd5eapi.co/api/classes/`
+- `http://dnd5eapi.co/api/features/`
+- `http://dnd5eapi.co/api/monsters/1/`
+- `http://dnd5eapi.co/api/spells/?name=`
+
+For now i only use the spells with a `?name=` search on the api after that call you will get a result that looks
+
+like:
 `"count": 1,
 	"results": [
 		{
@@ -81,7 +84,8 @@ For now i only use the spells with a `?name=` search on the api after that call 
 			"url": "http://www.dnd5eapi.co/api/spells/1"
 		}
 	]`
-  after that you that i do a new call on the newly gotten `url` and get the data you actually need.
+
+  - after that you that i do a new call on the newly gotten `url` and get the data you actually need.
   `"_id":"5bce91f95b7768e7920184d6","index":1,"name":"Acid Arrow","desc":["A shimmering green arrow streaks toward a target within range and bursts in a spray of acid. Make a ranged spell attack against the target. On a hit, the target takes 4d4 acid damage immediately and 2d4 acid damage at the end of its next turn. On a miss, the arrow splashes the target with acid for half as much of the initial damage and no damage at the end of its next turn."],"higher_level":["When you cast this spell using a spell slot of 3rd level or higher, the damage (both initial and later) increases by 1d4 for each slot level above 2nd."],"page":"phb 259","range":"90 feet","components":["V","S","M"],"material":"Powdered rhubarb leaf and an adderâ€™s stomach.","ritual":"no","duration":"Instantaneous","concentration":"no","casting_time":"1 action","level":2,"school":{"name":"Evocation","url":"http://www.dnd5eapi.co/api/magic-schools/5"},"classes":[{"url":"http://www.dnd5eapi.co/api/classes/12","name":"Wizard"}],"subclasses":[{"url":"http://www.dnd5eapi.co/api/subclasses/2","name":"Lore"},{"url":"http://www.dnd5eapi.co/api/subclasses/4","name":"Land"}],"url":"http://www.dnd5eapi.co/api/spells/1"`
 
 after getting this data i only send `desc` to the end user.
@@ -126,3 +130,30 @@ if (msg.includes("roll")) {
 After the server has rolled the dice it will add this to an object for the datavisual.
 
 ## datavisual
+![Demo pic](https://github.com/MartijnReeuwijk/websockets/blob/master/readmeassets/pie.png)
+For the datavisual u use D3 to make the pie chart, its nothing special but does the trick for the needs of the site.
+
+## Sound sockets
+To make the game more real, I added a dice rolling sound so everyone knows when the someone is rolling dice!
+When the player or dm rolls a 20 on the dice the app will play "Epic.mp3" and it will send it over the sockets so all the users can hear your epic gamer moment.
+
+# Data flow
+The server talks with the DND api where i request all my data
+
+
+
+
+## DND nerd feedback
+![Feedback](https://github.com/MartijnReeuwijk/websockets/blob/master/readmeassets/feedback.png);
+For feedback i have ask the DCA fan server where all the DND players gather who are fan off the official show.
+Nova an experience DND player has given me some feedback on the functions of the app and what it needs.
+i have added the feedback items to the todo list
+
+
+## Todo
+- [] Able to cast from the list
+- [] Able to summon from a monster list
+- [] Refactor to Async
+- [] More Rules
+- [] Change rules to out of view items
+- [] Add dice type by results

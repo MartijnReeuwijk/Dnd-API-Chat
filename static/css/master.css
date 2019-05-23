@@ -104,6 +104,7 @@ input[list] {
 }
 
 .rules {
+   list-style-type: none;
   padding: 5px;
   margin: 5px 0;
   border-radius: 5px;
@@ -111,7 +112,14 @@ input[list] {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .rules li {
-  margin: 1px 0;
+  margin: 2px 0;
+}
+.rules li:first-of-type{
+  width: 100%;
+  /* font-size:25px; */
+  font-weight: bold;
+  text-align: center;
+  margin: 2px 0;
 }
 .rules:hover {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
