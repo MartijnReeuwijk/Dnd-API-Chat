@@ -141,10 +141,17 @@ To make the game more real, I added a dice rolling sound so everyone knows when 
 When the player or dm rolls a 20 on the dice the app will play "Epic.mp3" and it will send it over the sockets so all the users can hear your epic gamer moment.
 
 # Data flow
-The server talks with the DND api where i request all my data
+![Feedback](https://github.com/MartijnReeuwijk/websockets/blob/master/readmeassets/dataflow.jpg);
 
+The server talks with the DND api where i request all my data.
+My server will generate a dice result and then send it back with the sockets to all users.
+The dice roll will also be saved on the server to be send to the front-end to update a data variable to remake the Pie chart with the new life data.
 
+### Old data flow
+![Feedback](https://github.com/MartijnReeuwijk/websockets/blob/master/readmeassets/oldflow.jpg);
 
+This is the old flow from my first concept, it shows the use of a database and rooms.
+Sadly i didnt have time to fully implement the room and database, however i did do research for it and later removed it due to time and skill.
 
 ## DND nerd feedback
 ![Feedback](https://github.com/MartijnReeuwijk/websockets/blob/master/readmeassets/feedback.png);
