@@ -71,7 +71,7 @@ dit doe ik door het gebruiken van een DND API waar de data van de regels uit het
 For now the app works with the `http://www.dnd5eapi.co` api and its endpoints.
 - `http://dnd5eapi.co/api/classes/`
 - `http://dnd5eapi.co/api/features/`
-- `http://dnd5eapi.co/api/monsters/1/`
+- `http://dnd5eapi.co/api/monsters/?name=`
 - `http://dnd5eapi.co/api/spells/?name=`
 
 For now i only use the spells with a `?name=` search on the api after that call you will get a result that looks
@@ -88,7 +88,8 @@ like:
   - after that you that i do a new call on the newly gotten `url` and get the data you actually need.
   `"_id":"5bce91f95b7768e7920184d6","index":1,"name":"Acid Arrow","desc":["A shimmering green arrow streaks toward a target within range and bursts in a spray of acid. Make a ranged spell attack against the target. On a hit, the target takes 4d4 acid damage immediately and 2d4 acid damage at the end of its next turn. On a miss, the arrow splashes the target with acid for half as much of the initial damage and no damage at the end of its next turn."],"higher_level":["When you cast this spell using a spell slot of 3rd level or higher, the damage (both initial and later) increases by 1d4 for each slot level above 2nd."],"page":"phb 259","range":"90 feet","components":["V","S","M"],"material":"Powdered rhubarb leaf and an adderâ€™s stomach.","ritual":"no","duration":"Instantaneous","concentration":"no","casting_time":"1 action","level":2,"school":{"name":"Evocation","url":"http://www.dnd5eapi.co/api/magic-schools/5"},"classes":[{"url":"http://www.dnd5eapi.co/api/classes/12","name":"Wizard"}],"subclasses":[{"url":"http://www.dnd5eapi.co/api/subclasses/2","name":"Lore"},{"url":"http://www.dnd5eapi.co/api/subclasses/4","name":"Land"}],"url":"http://www.dnd5eapi.co/api/spells/1"`
 
-after getting this data i only send `desc` to the end user.
+As you can see this is a huge mess of data and i dont want to overwhelm the players with useless data.
+So i do a cleaning function that will work for both the summoned monsters and the spells so the server only need to do one function
 
 ## Npm request
 With the use of npm request (works as a fetch) i request the data from the API.
@@ -130,8 +131,10 @@ if (msg.includes("roll")) {
 After the server has rolled the dice it will add this to an object for the datavisual.
 
 ## datavisual
-![Demo pic](https://github.com/MartijnReeuwijk/websockets/blob/master/readmeassets/pie.png)
-For the datavisual u use D3 to make the pie chart, its nothing special but does the trick for the needs of the site.
+![Demo pic](https://github.com/MartijnReeuwijk/websockets/blob/master/readmeassets/pie.png);
+
+ For the datavisual u use D3 to make the pie chart.
+ The pie chart is based on the dice rolled and not on the total amount, it will show the dominance of the D20 in the game. The chart shows the % of dice used in you session / game later i will add a visual to get the total amount of damaged rolled per dice and popularity of spells and their damage dice.
 
 ## Sound sockets
 To make the game more real, I added a dice rolling sound so everyone knows when the someone is rolling dice!
@@ -145,6 +148,7 @@ The server talks with the DND api where i request all my data
 
 ## DND nerd feedback
 ![Feedback](https://github.com/MartijnReeuwijk/websockets/blob/master/readmeassets/feedback.png);
+
 For feedback i have ask the DCA fan server where all the DND players gather who are fan off the official show.
 Nova an experience DND player has given me some feedback on the functions of the app and what it needs.
 i have added the feedback items to the todo list
