@@ -8,7 +8,7 @@ const express = require("express"),
   port = process.env.PORT || 5000,
   fs = require("fs"),
   rp = require("request-promise");
-Rooms = require("./models/rooms");
+  // Rooms = require("./models/rooms");
 // Data = require("./models/fetchData");
 // SplitAfterCast = require("./models/splitAfterKey");
 // console.log(Rooms);
@@ -56,7 +56,7 @@ io.on("connection", function(socket) {
       let split = "roll";
       let requestOn = splitAfterKey(split, msg);
       let dice = rollDice(requestOn);
-      io.emit("roll", dice);
+      io.emit("gameRules", dice);
     }
 
     if (msg.includes("cast")) {
@@ -70,10 +70,9 @@ io.on("connection", function(socket) {
     if (msg.includes("summon")) {
       let type = "monsters";
       let split = "summon";
-
       let requestOn = splitAfterKey(split, msg);
       console.log(requestOn);
-      apiRequest(type, requestOn).then(result => io.emit("roll", result));
+      apiRequest(type, requestOn).then(result => io.emit("gameRules", result));
     }
     io.emit("chat message", msg);
   });
