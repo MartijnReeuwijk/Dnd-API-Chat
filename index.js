@@ -56,7 +56,7 @@ io.on("connection", function(socket) {
       let split = "roll";
       let requestOn = splitAfterKey(split, msg);
       let dice = rollDice(requestOn);
-      io.emit("gameRules", dice);
+      io.emit("roll", dice);
     }
 
     if (msg.includes("cast")) {
@@ -151,30 +151,30 @@ function urlRequest(url) {
 
 function makeObject(data) {
   let resultData = {
-    name: data.name ? data.name : undefined,
-    size: data.size ? data.size : undefined,
-    type: data.type ? data.type : undefined,
-    alignment: data.alignment ? data.alignment : undefined,
-    armor_class: data.armor_class ? data.armor_class : undefined,
-    hit_points: data.hit_points ? data.hit_points : undefined,
-    speed: data.speed ? data.speed : undefined,
-    strength: data.strength ? data.strength : undefined,
-    dexterity: data.dexterity ? data.dexterity : undefined,
-    constitution: data.constitution ? data.constitution : undefined,
-    intelligence: data.intelligence ? data.intelligence : undefined,
-    wisdom: data.wisdom ? data.wisdom : undefined,
-    charisma: data.charisma ? data.charisma : undefined,
-    senses: data.senses ? data.senses : undefined,
-    desc: data.desc ? data.desc[0] : undefined,
-    page: data.page ? data.page : undefined,
-    range: data.range ? data.range : undefined,
-    components: data.components ? data.components[0] : undefined,
-    material: data.material ? data.material : undefined,
-    duration: data.duration ? data.duration : undefined,
-    concentration: data.concentration ? data.concentration : undefined
+    name: data.name ? data.name : null,
+    size: data.size ? data.size : null,
+    type: data.type ? data.type : null,
+    alignment: data.alignment ? data.alignment : null,
+    armor_class: data.armor_class ? data.armor_class : null,
+    hit_points: data.hit_points ? data.hit_points : null,
+    speed: data.speed ? data.speed : null,
+    strength: data.strength ? data.strength : null,
+    dexterity: data.dexterity ? data.dexterity : null,
+    constitution: data.constitution ? data.constitution : null,
+    intelligence: data.intelligence ? data.intelligence : null,
+    wisdom: data.wisdom ? data.wisdom : null,
+    charisma: data.charisma ? data.charisma : null,
+    senses: data.senses ? data.senses : null,
+    desc: data.desc ? data.desc[0] : null,
+    page: data.page ? data.page : null,
+    range: data.range ? data.range : null,
+    components: data.components ? data.components[0] : null,
+    material: data.material ? data.material : null,
+    duration: data.duration ? data.duration : null,
+    concentration: data.concentration ? data.concentration : null
   };
   Object.keys(resultData).forEach(key => {
-    if (resultData[key] === undefined) {
+    if (resultData[key] === null) {
       delete resultData[key];
     }
   });
